@@ -7,7 +7,7 @@ use std::io::Error;
 
 
 fn main() -> Result<(), Error> {
-    let f = File::open("src/input.txt")?;
+    let f = File::open("input.txt")?;
     let vec = read_vec(f)?;
     
     // Part One
