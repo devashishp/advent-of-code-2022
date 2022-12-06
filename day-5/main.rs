@@ -8,36 +8,39 @@ fn main() -> Result<(), Error> {
     //  Part One
     let num_stacks = num_stacks(f);
     let number:u32 = num_stacks?;
-    let mut stacks: Vec<Vec<char>> = vec![Vec::<char>::new(); number as usize];
-    let stack_ref: &mut Vec<Vec<char>> = &mut stacks;
+    let mut stack1: Vec<Vec<char>> = vec![Vec::<char>::new(); number as usize];
+    let mut stack2 = stack1.clone();
+
+    let stack_ref1: &mut Vec<Vec<char>> = &mut stack1;
+    let stack_ref2: &mut Vec<Vec<char>> = &mut stack2;
 
     let f = File::open("input.txt")?;
-    let result = parse_one(f, stack_ref);
+    let result = parse_one(f, stack_ref1);
     if result? != 0 {
         println!("Error!!");
     }
     println!("Stacks Final:");
-    for item in &stacks {
+    for item in &stack1 {
         println!("{:?}",item);
     }
-    let top_crates = get_tops(&stacks);
+    let top_crates = get_tops(&stack1);
     println!("Final String: {}",top_crates);
     //WSFTMRHPP
     // Part Two
 
-    let mut stacks: Vec<Vec<char>> = vec![Vec::<char>::new(); number as usize];
-    let stack_ref: &mut Vec<Vec<char>> = &mut stacks;
+    // let mut stacks: Vec<Vec<char>> = vec![Vec::<char>::new(); number as usize];
+    // let stack_ref: &mut Vec<Vec<char>> = &mut stacks;
 
     let f = File::open("input.txt")?;
-    let result = parse_two(f, stack_ref);
+    let result = parse_two(f, stack_ref2);
     if result? != 0 {
         println!("Error!!");
     }
     println!("Stacks Final:");
-    for item in &stacks {
+    for item in &stack2 {
         println!("{:?}",item);
     }
-    let top_crates = get_tops(&stacks);
+    let top_crates = get_tops(&stack2);
     println!("Final String: {}",top_crates);
     //GSLCMFBRP
 
